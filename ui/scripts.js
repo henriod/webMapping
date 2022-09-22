@@ -65,11 +65,11 @@ map.on("pm:create", ({ workingLayer }) => {
     });
 });
 // add point to database on map click
-map.on("click", onMapClick);
+// map.on("click", onMapClick);
 function onMapClick(e) {
     var popLocation = e.latlng;
     var marker = L.marker([popLocation.lat, popLocation.lng]).addTo(map);
-    //Reverse Geocode lat lon of any point
+    //Reverse Geocode lat lon of any point with Nominatim
     var LocationName;
     $.ajax({
         url: "https://nominatim.openstreetmap.org/reverse?" + "lat=" + popLocation.lat + "&lon=" + popLocation.lng + "&format=geojson",
@@ -134,23 +134,7 @@ function onMapClick(e) {
             console.log(xhr, resp, text);
         },
     });
-    // To post the clicked point to the database
-    // $.ajax({
-    //     url: "/api/locations/",
-    //     async: true,
-    //     type: 'POST',
-    //     dataType: 'json',
-    //     data: JSON.stringify(mydata),
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     success: function (results) {
-    //         console.log(results);
-    //     },
-    //     erro: function (xhr, resp, text) {
-    //         console.log(xhr, resp, text)
-    //     }
-    // })
+
 }
 
 // JSON to CSV Converter
@@ -171,5 +155,30 @@ function ConvertToCSV(objArray) {
 
     return str;
 }
-
+//Post Point to database from map
+// To post the clicked point to the database
+function postLocation(e) {
+    var popLocation = e.latlng;
+    mydata = {
+        'lat': popLocation.lat,
+        'lon': popLocation.lng,
+        'value': Math.floor(Math.random() * 100)
+    }
+    $.ajax({
+        url: "/api/locations/",
+        async: true,
+        type: 'POST',
+        dataType: 'json',
+        data: JSON.stringify(mydata),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        success: function (results) {
+            console.log(results);
+        },
+        erro: function (xhr, resp, text) {
+            console.log(xhr, resp, text)
+        }
+    })
+}
 
