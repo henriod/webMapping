@@ -1,0 +1,4 @@
+ui/lib/
+.env
+.vscode
+__pycache__/

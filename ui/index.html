@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="/lib/leaflet-1.8.0/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="/lib/leaflet-geoman-2.4.0/leaflet-geoman.css"
+    />
+    <link rel="stylesheet" href="/lib/bootstrap-5.2.1-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- scripts -->
+    <script src="/lib/leaflet-1.8.0/leaflet.js"></script>
+    <script src="/lib/leaflet-geoman-2.4.0/leaflet-geoman.min.js"></script>
+    <script src="/lib/jquery-3.6.1.min.js"></script>
+    <script src="/lib/turf.min.js"></script>
+    <script src="/lib/bootstrap-5.2.1-dist/js/bootstrap.bundle.min.js"></script>
+    <title>Myapp</title>
+  </head>
+  <body>
+    <!-- As a heading -->
+    <nav class="navbar bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Web Mapping Recap</span>
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div id="map">
+      <!-- this contains our map  -->
+    </div>
+    <div class="table-container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Point</th>
+            <th scope="col">Duration (minutes)</th>
+            <th scope="col">Distance (km)</th>
+          </tr>
+        </thead>
+        <tbody id="tablebody">
+          <!-- table data here are filled by js  -->
+        </tbody>
+      </table>
+    </div>
+    <script src="scripts.js"></script>
+  </body>
+</html>

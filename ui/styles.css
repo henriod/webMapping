@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: ghostwhite;
+}
+nav {
+  background-color: tomato;
+}
+/* style for our map  */
+#map {
+  height: 500px;
+}
+/* style for our table container  */
+.table-container {
+  height: calc(100% - 600px);
+  overflow-y: scroll;
+}
