@@ -69,6 +69,20 @@ map.on("click", onMapClick);
 function onMapClick(e) {
     var popLocation = e.latlng;
     var marker = L.marker([popLocation.lat, popLocation.lng]).addTo(map);
+    //Reverse Geocode lat lon of any point
+    var LocationName;
+    $.ajax({
+        url: "https://nominatim.openstreetmap.org/reverse?" + "lat=" + popLocation.lat + "&lon=" + popLocation.lng + "&format=geojson",
+        type: "GET",
+        dataType: "json",
+        success: function (request) {
+            LocationName = request.features[0].properties.display_name;
+            return LocationName
+        },
+        erro: function (xhr, resp, text) {
+            console.log(xhr, resp, text);
+        },
+    })
     //Get location from database using ajax request
     $.ajax({
         url: "/api/locations/",
@@ -101,7 +115,7 @@ function onMapClick(e) {
                         var cell2 = row.insertCell(1);
                         var cell3 = row.insertCell(2);
                         var cell4 = row.insertCell(3);
-                        cell1.innerHTML = index;
+                        cell1.innerHTML = LocationName;
                         cell2.innerHTML = element.value;
                         cell3.innerHTML = (results.routes[0].duration / 60).toFixed(2);
                         cell4.innerHTML = (results.routes[0].distance / 1000).toFixed(2);
@@ -157,3 +171,5 @@ function ConvertToCSV(objArray) {
 
     return str;
 }
+
+
