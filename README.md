@@ -8,6 +8,7 @@ Simple application using fastapi , leaflet, leaflet-geoman, jquery, postgresql, 
 
 - Python
 - Postgresql with Postgis extension
+- Take a look at the index.html and download all the libraries use e.g leaflet, jquery, leaflet-geoman, bootstrap, turf
 
 ### Installing
 
@@ -30,7 +31,7 @@ uvicorn main:app --reload
 ## Author
 
 benard odhiambo  
-[@DomPizzie](https://twitter.com/henriod93)
+[@Henriod](https://twitter.com/henriod93)
 
 ## License
 
